@@ -186,9 +186,13 @@ bundle.ext.globalSearch.searchKapp = function(container, q, kappSlug, pageSize, 
                 hasNext = true;
             }
             
-            // Sort data by weight, highest first
+            // Sort data by weight, highest first, then by title, alphabetically 
             data.sort(function(a, b) {
-                return parseFloat(b.weight) - parseFloat(a.weight);
+                var sort = parseFloat(b.weight) - parseFloat(a.weight);
+                if (sort == 0 && a.title.toLowerCase() != b.title.toLowerCase()){
+                    sort = a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1;
+                }
+                return sort;
             });
             
             // Build the ui to display the data
@@ -301,9 +305,13 @@ bundle.ext.globalSearch.processAllKappsSearch = function(container, kapps, pageS
         return false;
     });
     
-    // Sort data by weight
+    // Sort data by weight, highest first, then by title, alphabetically 
     mergedData.sort(function(a, b) {
-        return parseFloat(b.weight) - parseFloat(a.weight);
+        var sort = parseFloat(b.weight) - parseFloat(a.weight);
+        if (sort == 0 && a.title.toLowerCase() != b.title.toLowerCase()){
+            sort = a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1;
+        }
+        return sort;
     });
     
 
