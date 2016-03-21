@@ -18,7 +18,7 @@
             
             <!-- Add a tab for each Kapp in the space, if the Kapp is not Excluded from Global Search. Set Kapp to active if it matches the source parameter. -->
             <c:forEach var="kappIter" items="${space.kapps}">
-                <c:if test="${kappIter.hasAttribute("Include in Global Search")}">
+                <c:if test="${kappIter.hasAttribute('Include in Global Search')}">
                     <li role="presentation" class="${text.equalsIgnoreCase(kappIter.slug, param['source']) ? "active": ""}">
                         <a href="#search-${kappIter.slug}" aria-controls="search-${kappIter.slug}" role="tab" data-toggle="tab">${kappIter.name}</a>
                     </li>
@@ -45,7 +45,7 @@
         <!-- Create content div for each Kapp in the space, if the Kapp is not Excluded from Global Search. 
              Set Kapp slug into 'data-kapp-slug' attribute for use in javascript to perform the correct search. -->
         <c:forEach var="kappIter" items="${space.kapps}">
-            <c:if test="${kappIter.hasAttribute("Include in Global Search")}">
+            <c:if test="${kappIter.hasAttribute('Include in Global Search')}">
                 <div id="search-${kappIter.slug}" role="tabpanel" class="tab-pane clearfix ${text.equalsIgnoreCase(kappIter.slug, param['source']) ? "active": ""}" data-kapp-slug="${kappIter.slug}">
                     <h3>${kappIter.name} Search Results <c:if test="${text.isNotBlank(param['q'])}">for '${param['q']}'</c:if></h3>
                     <div class="card-container">

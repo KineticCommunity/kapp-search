@@ -68,7 +68,7 @@
             </ul>
             <div class="navbar-form" role="search" style='margin-right:1em;'>
                 <c:choose>
-                    <c:when test="${not empty space.getKapp("search") && (empty kapp || kapp.hasAttribute("Include in Global Search") || text.equals(kapp.slug, "search"))}">
+                    <c:when test="${not empty space.getKapp('search') && (empty kapp || kapp.hasAttribute('Include in Global Search') || text.equals(kapp.slug, 'search'))}">
                         <form action="${bundle.spaceLocation}/search" method="GET" role="form">
                             <div class="form-group">
                                 <c:if test="${not empty kapp}">
